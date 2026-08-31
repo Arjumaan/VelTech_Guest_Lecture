@@ -53,7 +53,7 @@ export default function Projects() {
     // DiceBox 1.1+ expects a single config object
     diceBox.current = new DiceBox({
       container: '#dice-box-canvas',
-      assetPath: 'https://unpkg.com/@3d-dice/dice-box@1.1.4/dist/assets/',
+      assetPath: `${import.meta.env.BASE_URL}assets/dice-box/`,
       theme: 'default',
       themeColor: '#b300ff', // neon purple
       scale: 8,
