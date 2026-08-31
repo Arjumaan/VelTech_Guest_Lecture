@@ -494,6 +494,57 @@ const filteredEvents = events.filter(event =>
           </Accordion>
         </section>
 
+        {/* Practical Exercises */}
+        <section className="section">
+          <h2 className="section-title">💻 Part VIII — Practical Exercises</h2>
+          <p className="section-subtitle">Let's build things to solidify our knowledge!</p>
+
+          <Accordion title="1. Profile Card (Props)" icon={<Box size={18} />} neonColor="cyan" defaultOpen={true}>
+            <p>Create a <code>StudentProfile</code> component that takes <code>name</code>, <code>department</code>, <code>year</code>, and <code>skills</code> as props, and renders a professional card.</p>
+          </Accordion>
+
+          <Accordion title="2. Product Filter (filter)" icon={<Search size={18} />} neonColor="cyan">
+            <p>Given a list of products (Laptop: 70k, Phone: 30k, Tablet: 25k), use <code>.filter()</code> to display only products above ₹30,000.</p>
+          </Accordion>
+
+          <Accordion title="3. Interactive Counter (State)" icon={<Zap size={18} />} neonColor="cyan">
+            <p>Build a counter with three buttons: <strong>+</strong>, <strong>-</strong>, and <strong>Reset</strong> using <code>useState</code>.</p>
+          </Accordion>
+
+          <Accordion title="4. API Fetching (useEffect)" icon={<Globe size={18} />} neonColor="cyan">
+            <p>Fetch users from <code>https://jsonplaceholder.typicode.com/users</code> and render their names and emails on the screen.</p>
+          </Accordion>
+        </section>
+
+        {/* Common Doubts */}
+        <section className="section">
+          <h2 className="section-title">🤔 Part IX — Common Student Doubts</h2>
+          
+          <Accordion title="Why do we need React if JavaScript can manipulate the DOM?" icon={<Component size={18} />} neonColor="orange" defaultOpen={true}>
+            <p>JavaScript absolutely can manipulate the DOM. React provides a component-oriented model for organizing UI, managing state and describing how the UI should correspond to application data. It becomes especially useful as the interface grows.</p>
+          </Accordion>
+
+          <Accordion title="Is React a programming language?" icon={<Code2 size={18} />} neonColor="orange">
+            <p>No. <strong>JavaScript</strong> is the programming language. <strong>React</strong> is a JavaScript library.</p>
+          </Accordion>
+
+          <Accordion title="Are props and state the same?" icon={<Repeat size={18} />} neonColor="orange">
+            <p>No.<br/><br/><strong>Props:</strong> Passed INTO a component from its parent.<br/><strong>State:</strong> Data managed BY the component itself.</p>
+          </Accordion>
+
+          <Accordion title="Why can't we just use variables instead of state?" icon={<Zap size={18} />} neonColor="orange">
+            <p>Because React does not treat arbitrary variable changes as a signal to update the UI. State provides React with the information needed to update the component's rendered output.</p>
+          </Accordion>
+
+          <Accordion title="Why useEffect for API calls?" icon={<Globe size={18} />} neonColor="orange">
+            <p>Because fetching data is interaction with an external system. Effects are designed for synchronizing a component with external systems such as network resources.</p>
+          </Accordion>
+          
+          <Accordion title="Why can't we call the AI API directly from React?" icon={<Monitor size={18} />} neonColor="orange">
+            <p>Because sensitive credentials such as API keys should not be exposed in browser-delivered frontend code. We must route it through our Backend (which we build tomorrow!).</p>
+          </Accordion>
+        </section>
+
         {/* Viva Questions */}
         <section className="section">
           <h2 className="section-title">🎤 Interview / Viva Questions</h2>
