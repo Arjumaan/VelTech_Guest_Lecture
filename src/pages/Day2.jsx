@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Server, Database, Shield, Lock, Key, Globe, Layers, FileCode, Braces, Search, ListOrdered, AlertTriangle, GitBranch, ArrowRight } from 'lucide-react'
+import { Server, Database, Shield, Lock, Key, Globe, Layers, FileCode, Braces, Search, ListOrdered, AlertTriangle, GitBranch, ArrowRight, Activity, HelpCircle, Code2 } from 'lucide-react'
 import Accordion from '../components/Accordion'
 import CodeBlock from '../components/CodeBlock'
 import FlowDiagram from '../components/FlowDiagram'
@@ -116,6 +116,41 @@ app.use(logger);`}</CodeBlock>
               <tr><td>Body</td><td>JSON data</td><td>req.body</td></tr>
               <tr><td>Headers</td><td>Authorization</td><td>req.headers</td></tr>
             </tbody></table>
+          </Accordion>
+
+          <Accordion title="Error Handling & Try/Catch" icon={<Activity size={18} />} neonColor="cyan">
+            <CodeBlock lang="javascript">{`app.get("/api/events", async (req, res, next) => {
+  try {
+    const events = await Event.find();
+    res.json(events);
+  } catch (error) {
+    // Instead of crashing the server, pass to error handler
+    next(error); 
+  }
+});
+
+// Central Error Handler (at the bottom of server.js)
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.statusCode || 500).json({
+    message: err.message || "Internal Server Error"
+  });
+});`}</CodeBlock>
+          </Accordion>
+
+          <Accordion title="API Testing (Postman / Thunder Client)" icon={<Code2 size={18} />} neonColor="cyan">
+            <p style={{ marginBottom: 12 }}>The browser is only useful for <code>GET</code> requests. For building APIs, we need tools that can send <code>POST</code>, <code>PUT</code>, <code>DELETE</code>, Headers, and JSON Bodies.</p>
+            <div className="grid-2">
+              <div className="neo-inset">
+                <h4 style={{ color: 'var(--neon-lime)' }}>GET Request</h4>
+                <p style={{ fontSize: '0.85rem' }}>URL: <code>http://localhost:5000/api/events</code></p>
+              </div>
+              <div className="neo-inset">
+                <h4 style={{ color: 'var(--neon-cyan)' }}>POST Request</h4>
+                <p style={{ fontSize: '0.85rem' }}>URL: <code>http://localhost:5000/api/events</code></p>
+                <p style={{ fontSize: '0.85rem' }}>Body (JSON): <code>{`{"title": "AI Workshop"}`}</code></p>
+              </div>
+            </div>
           </Accordion>
         </section>
 
@@ -331,6 +366,87 @@ async function createEvent(eventData) {
 ├── server.js
 └── package.json`}</CodeBlock>
           </div>
+        </section>
+
+        {/* Practical Exercises */}
+        <section className="section">
+          <h2 className="section-title">💻 Part VII — Practical Exercises</h2>
+          <div className="grid-2">
+            <Accordion title="1. Basic API & CRUD" icon={<Code2 size={18} />} neonColor="pink">
+              <ul className="viva-list">
+                <li>Create <code>GET /api/students</code> returning a static array.</li>
+                <li>Create <code>/api/products</code> and implement POST, GET, PUT, and DELETE methods.</li>
+              </ul>
+            </Accordion>
+            <Accordion title="2. MongoDB Integration" icon={<Database size={18} />} neonColor="lime">
+              <ul className="viva-list">
+                <li>Create a <code>students</code> collection in MongoDB.</li>
+                <li>Schema: <code>name</code>, <code>email</code>, <code>department</code>, <code>year</code>.</li>
+                <li>Implement full database CRUD operations for students.</li>
+              </ul>
+            </Accordion>
+            <Accordion title="3. Search & Pagination" icon={<Search size={18} />} neonColor="cyan">
+              <ul className="viva-list">
+                <li>Implement <code>GET /api/students?department=CSE</code>.</li>
+                <li>Implement <code>GET /api/students?page=2&limit=10</code>.</li>
+              </ul>
+            </Accordion>
+            <Accordion title="4. Auth & Role-Based Access" icon={<Shield size={18} />} neonColor="purple">
+              <ul className="viva-list">
+                <li>Implement <code>POST /register</code> and <code>POST /login</code>.</li>
+                <li>Implement roles: <code>student</code> (can GET) and <code>admin</code> (can POST, PUT, DELETE).</li>
+              </ul>
+            </Accordion>
+          </div>
+        </section>
+
+        {/* Common Doubts */}
+        <section className="section">
+          <h2 className="section-title">🤔 Part VIII — Common Doubts & Real-World Analogies</h2>
+          
+          <Accordion title="Common Student Doubts" icon={<HelpCircle size={18} />} neonColor="orange" defaultOpen={true}>
+            <div className="grid-2">
+              <div className="neo-inset">
+                <h4>Is Node.js a language?</h4>
+                <p style={{ fontSize: '0.85rem' }}><strong>No.</strong> JavaScript is the language. Node.js is the runtime environment that lets you execute JS outside the browser.</p>
+              </div>
+              <div className="neo-inset">
+                <h4>Is Express a language?</h4>
+                <p style={{ fontSize: '0.85rem' }}><strong>No.</strong> It is a web framework built on top of Node.js for creating APIs easily.</p>
+              </div>
+              <div className="neo-inset">
+                <h4>MongoDB vs Mongoose?</h4>
+                <p style={{ fontSize: '0.85rem' }}><strong>MongoDB</strong> is the actual database. <strong>Mongoose</strong> is the ODM (library) we use in Node to talk to MongoDB with schemas.</p>
+              </div>
+              <div className="neo-inset">
+                <h4>Can JWT be decoded?</h4>
+                <p style={{ fontSize: '0.85rem' }}><strong>Yes!</strong> Encoding is not encryption. Do NOT store passwords or sensitive data inside a JWT payload.</p>
+              </div>
+              <div className="neo-inset">
+                <h4>Why validate on both frontend & backend?</h4>
+                <p style={{ fontSize: '0.85rem' }}>Frontend validation is for <strong>user experience</strong>. Backend validation is for <strong>security</strong>. Never trust the frontend!</p>
+              </div>
+              <div className="neo-inset">
+                <h4>Why does React need CORS?</h4>
+                <p style={{ fontSize: '0.85rem' }}>CORS is enforced by the browser. If React runs on port 5173 and Express on 5000, the browser blocks it unless Express explicitly allows the origin.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          <Accordion title="Real-World Analogies" icon={<Globe size={18} />} neonColor="orange">
+            <table className="neo-table">
+              <thead><tr><th>Concept</th><th>Real-World Example</th></tr></thead>
+              <tbody>
+                <tr><td>Node.js & Express</td><td>The restaurant kitchen (Backend server processing orders)</td></tr>
+                <tr><td>Route (e.g. /products)</td><td>The menu items you can order</td></tr>
+                <tr><td>MongoDB</td><td>The storage pantry (Database)</td></tr>
+                <tr><td>Authentication</td><td>Showing your ID at the door (Login)</td></tr>
+                <tr><td>Authorization</td><td>Staff-only areas vs Customer areas (Roles)</td></tr>
+                <tr><td>Pagination</td><td>Amazon product listings (Pages 1, 2, 3...)</td></tr>
+                <tr><td>Filtering</td><td>Price low-to-high filter on Flipkart</td></tr>
+              </tbody>
+            </table>
+          </Accordion>
         </section>
 
         {/* Viva */}
