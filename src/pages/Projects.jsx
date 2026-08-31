@@ -41,6 +41,7 @@ export default function Projects() {
   const [rolling, setRolling] = useState(false)
   const [used, setUsed] = useState([])
   const [expandedId, setExpandedId] = useState(null)
+  const [copiedId, setCopiedId] = useState(null)
 
   const rollDice = () => {
     if (rolling) return
@@ -195,15 +196,21 @@ export default function Projects() {
                           </h5>
                           <button 
                             className="nav-btn" 
-                            style={{ padding: '4px 10px', fontSize: '0.75rem' }}
+                            style={{ 
+                              padding: '4px 10px', 
+                              fontSize: '0.75rem',
+                              background: copiedId === p.id ? 'var(--neon-lime)' : '',
+                              color: copiedId === p.id ? '#000' : ''
+                            }}
                             onClick={(e) => {
                               e.stopPropagation();
                               const promptText = `Act as an expert MERN stack developer. I am building a project called "${p.title}".\n\nProject Description: ${p.desc}\n\nCore Requirements:\n1. Frontend: Build a responsive React UI (Vite).\n2. Backend: Set up a Node.js/Express REST API.\n3. Database: Design a MongoDB schema to support the app data.\n4. AI Integration: Integrate the Google Gemini API to implement the AI capabilities.\n\nPlease provide a step-by-step implementation plan, starting with the MongoDB schema and Backend API routes.`;
                               navigator.clipboard.writeText(promptText);
-                              alert('Prompt copied to clipboard!');
+                              setCopiedId(p.id);
+                              setTimeout(() => setCopiedId(null), 2000);
                             }}
                           >
-                            Copy Prompt
+                            {copiedId === p.id ? '✓ Copied!' : 'Copy Prompt'}
                           </button>
                         </div>
                         <div style={{ 
