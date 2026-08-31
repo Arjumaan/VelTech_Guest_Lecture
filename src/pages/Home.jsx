@@ -210,10 +210,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="app-footer">
-        <p>MERN & AI Integration Masterclass • VelTech Engineering University © 2026</p>
-      </footer>
+      {/* Footer removed and delegated to App layout */}
     </div>
   )
 }
