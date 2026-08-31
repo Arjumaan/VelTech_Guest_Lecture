@@ -50,7 +50,8 @@ export default function Projects() {
   useEffect(() => {
     if (diceBox.current) return;
     
-    diceBox.current = new DiceBox(diceRef.current, {
+    // DiceBox expects a CSS selector string, not a DOM node ref
+    diceBox.current = new DiceBox('#dice-box-canvas', {
       assetPath: 'https://unpkg.com/@3d-dice/dice-box@1.1.4/dist/assets/',
       theme: 'default',
       themeColor: '#b300ff', // neon purple
@@ -122,6 +123,7 @@ export default function Projects() {
           <div className="dice-area" style={{ position: 'relative', minHeight: 450 }}>
             {/* The 3D Dice Canvas Container */}
             <div 
+               id="dice-box-canvas"
                ref={diceRef} 
                style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: 1, pointerEvents: 'none' }} 
             />
