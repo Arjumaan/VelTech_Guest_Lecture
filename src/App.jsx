@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Day1 from './pages/Day1'
 import Day2 from './pages/Day2'
 import Day3 from './pages/Day3'
+import ProjectCode from './pages/ProjectCode'
 import Projects from './pages/Projects'
 import './index.css'
 import './App.css'
@@ -18,6 +19,7 @@ function App() {
           <Route path="/day1" element={<Day1 />} />
           <Route path="/day2" element={<Day2 />} />
           <Route path="/day3" element={<Day3 />} />
+          <Route path="/project-code" element={<ProjectCode />} />
           <Route path="/projects" element={<Projects />} />
         </Routes>
       </main>

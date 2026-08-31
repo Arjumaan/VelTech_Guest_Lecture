@@ -9,6 +9,7 @@ const links = [
   { to: '/day1', label: 'Day 1' },
   { to: '/day2', label: 'Day 2' },
   { to: '/day3', label: 'Day 3' },
+  { to: '/project-code', label: 'Code' },
   { to: '/projects', label: 'Projects' },
 ]
 
