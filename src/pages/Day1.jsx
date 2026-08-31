@@ -593,9 +593,7 @@ const filteredEvents = events.filter(event =>
         </section>
       </div>
 
-      <footer className="app-footer">
-        <p>Day 1 — Web Development, JavaScript & React • VelTech Guest Lecture © 2026</p>
-      </footer>
+
     </div>
   )
 }

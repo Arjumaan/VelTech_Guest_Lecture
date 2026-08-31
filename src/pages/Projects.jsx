@@ -175,9 +175,7 @@ export default function Projects() {
         </section>
       </div>
 
-      <footer className="app-footer">
-        <p>Choose Your Project — VelTech Guest Lecture © 2026</p>
-      </footer>
+
     </div>
   )
 }

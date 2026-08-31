@@ -480,9 +480,7 @@ async function createEvent(eventData) {
         </section>
       </div>
 
-      <footer className="app-footer">
-        <p>Day 2 — Backend, Database & Security • VelTech Guest Lecture © 2026</p>
-      </footer>
+
     </div>
   )
 }

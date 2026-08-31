@@ -447,9 +447,7 @@ git push -u origin main`}</CodeBlock>
         </section>
       </div>
 
-      <footer className="app-footer">
-        <p>Day 3 — AI Integration & Capstone • VelTech Guest Lecture © 2026</p>
-      </footer>
+
     </div>
   )
 }

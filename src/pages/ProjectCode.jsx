@@ -546,9 +546,7 @@ export default AIAssistant;`}</CodeBlock>
         </section>
 
       </div>
-      <footer className="app-footer">
-        <p>Project Code — Campus Connect • VelTech Guest Lecture © 2026</p>
-      </footer>
+
     </div>
   )
 }
