@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@3d-dice/dice-box": "^1.1.4",
     "framer-motion": "^13.1.1",
     "lucide-react": "^1.38.0",
     "react": "^19.2.8",

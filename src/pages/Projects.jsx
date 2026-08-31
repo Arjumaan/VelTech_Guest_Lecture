@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Dice5, RotateCcw, Sparkles, Code2, Monitor } from 'lucide-react'
+import DiceBox from '@3d-dice/dice-box'
 import './Projects.css'
 
 const projects = [
@@ -43,35 +44,64 @@ export default function Projects() {
   const [expandedId, setExpandedId] = useState(null)
   const [copiedId, setCopiedId] = useState(null)
 
+  const diceRef = useRef(null)
+  const diceBox = useRef(null)
+
+  useEffect(() => {
+    if (diceBox.current) return;
+    
+    diceBox.current = new DiceBox(diceRef.current, {
+      assetPath: 'https://unpkg.com/@3d-dice/dice-box@1.1.4/dist/assets/',
+      theme: 'default',
+      themeColor: '#b300ff', // neon purple
+      scale: 8,
+      spinForce: 6,
+      throwForce: 6,
+      startingHeight: 8
+    });
+    
+    diceBox.current.init().catch(console.error);
+
+    return () => {
+      // Basic cleanup logic if needed
+    }
+  }, [])
+
   const rollDice = () => {
     if (rolling) return
+
+    const available = projects.filter(p => !used.includes(p.id))
+    if (available.length === 0) return
+
     setRolling(true)
     setSelected(null)
 
-    const available = projects.filter(p => !used.includes(p.id))
-    if (available.length === 0) {
-      setRolling(false)
-      return
-    }
-
-    let count = 0
-    const interval = setInterval(() => {
-      const rand = available[Math.floor(Math.random() * available.length)]
-      setSelected(rand)
-      count++
-      if (count > 15) {
-        clearInterval(interval)
+    if (diceBox.current) {
+      diceBox.current.roll('2d20').then(() => {
+        // After dice settle, pause for dramatic effect, then show project
+        setTimeout(() => {
+          const final = available[Math.floor(Math.random() * available.length)]
+          setSelected(final)
+          setUsed(prev => [...prev, final.id])
+          setRolling(false)
+          diceBox.current.clear()
+        }, 800)
+      })
+    } else {
+      // Fallback if diceBox fails to load
+      setTimeout(() => {
         const final = available[Math.floor(Math.random() * available.length)]
         setSelected(final)
         setUsed(prev => [...prev, final.id])
         setRolling(false)
-      }
-    }, 100)
+      }, 1000)
+    }
   }
 
   const reset = () => {
     setUsed([])
     setSelected(null)
+    if (diceBox.current) diceBox.current.clear()
   }
 
   return (
@@ -89,7 +119,13 @@ export default function Projects() {
       <div className="container day-content projects-wrapper">
         {/* Dice Roller */}
         <section className="section" style={{ textAlign: 'center' }}>
-          <div className="dice-area">
+          <div className="dice-area" style={{ position: 'relative', minHeight: 450 }}>
+            {/* The 3D Dice Canvas Container */}
+            <div 
+               ref={diceRef} 
+               style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: 1, pointerEvents: 'none' }} 
+            />
+
             <div style={{ position: 'absolute', top: 20, right: 20, zIndex: 10 }}>
                <span className="tag tag-orange" style={{ fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px' }}>
                  <Monitor size={14} /> Live Classroom Mode
@@ -101,16 +137,17 @@ export default function Projects() {
               onClick={rollDice}
               whileTap={{ scale: 0.95 }}
               disabled={rolling || used.length >= 30}
+              style={{ zIndex: 5, marginTop: 40 }}
             >
               <motion.div
                 animate={rolling ? { rotate: [0, 360] } : { rotate: 0 }}
                 transition={rolling ? { duration: 0.3, repeat: Infinity, ease: 'linear' } : {}}
               >
-                <Dice5 size={72} strokeWidth={1.5} />
+                {rolling ? <Sparkles size={64} /> : <Dice5 size={72} strokeWidth={1.5} />}
               </motion.div>
             </motion.button>
 
-            <p className="dice-instruction" style={{ maxWidth: 450, lineHeight: 1.6 }}>
+            <p className="dice-instruction" style={{ maxWidth: 450, lineHeight: 1.6, marginTop: 20 }}>
               {used.length >= 30
                 ? 'All 30 projects have been assigned! 🎉'
                 : rolling
