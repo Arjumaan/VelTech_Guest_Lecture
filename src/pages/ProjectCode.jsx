@@ -19,6 +19,37 @@ export default function ProjectCode() {
 
       <div className="container day-content">
         
+        {/* GETTING STARTED */}
+        <section className="section">
+          <h2 className="section-title" style={{ color: '#fff' }}><Box className="neon-pink" style={{ display: 'inline', verticalAlign: 'middle', marginRight: 8 }} /> Getting Started</h2>
+          <p className="section-subtitle">Download the Starter Kit and run the servers.</p>
+          
+          <div className="card" style={{ marginBottom: 30, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <h3 style={{ color: '#fff', marginBottom: 10 }}>1. Download the Starter Kit</h3>
+            <p style={{ color: 'var(--text-muted)' }}>Before you begin coding, make sure to download or clone the MERN Starter Kit from our official repository.</p>
+            <a href="https://github.com/Arjumaan/MERN_Starter" target="_blank" rel="noreferrer" className="nav-btn nav-source" style={{ display: 'inline-flex', marginTop: 15, width: 'fit-content' }}>
+               <Sparkles size={16} /> Get MERN_Starter Repository
+            </a>
+          </div>
+
+          <div className="card" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <h3 style={{ color: '#fff', marginBottom: 15 }}>2. Essential Run Commands</h3>
+            
+            <h4 style={{ color: 'var(--neon-cyan)', marginTop: 20, marginBottom: 10 }}>🖥️ Frontend (React / Vite)</h4>
+            <CodeBlock lang="bash">{`cd frontend
+npm install
+npm run dev`}</CodeBlock>
+
+            <h4 style={{ color: 'var(--neon-orange)', marginTop: 25, marginBottom: 10 }}>⚙️ Backend & Database (Node + MongoDB)</h4>
+            <p style={{ fontSize: '0.9rem', marginBottom: 10, color: 'var(--text-muted)' }}>Note: Make sure you have created your MongoDB cluster and added your connection string to the <code>.env</code> file.</p>
+            <CodeBlock lang="bash">{`cd backend
+npm install
+npm run dev`}</CodeBlock>
+
+            <h4 style={{ color: 'var(--neon-purple)', marginTop: 25, marginBottom: 10 }}>✨ AI Integration (Gemini API)</h4>
+            <p style={{ fontSize: '0.9rem', marginBottom: 10, color: 'var(--text-muted)' }}>Get your free API key from Google AI Studio and add it as <code>GEMINI_API_KEY</code> in your backend <code>.env</code> file before starting the backend server.</p>
+          </div>
+        </section>
         {/* DAY 1 - FRONTEND */}
         <section className="section">
           <h2 className="section-title"><Monitor className="neon-cyan" style={{ display: 'inline', verticalAlign: 'middle', marginRight: 8 }} /> Day 1 — React Frontend</h2>
