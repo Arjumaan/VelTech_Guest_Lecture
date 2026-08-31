@@ -40,6 +40,7 @@ export default function Projects() {
   const [selected, setSelected] = useState(null)
   const [rolling, setRolling] = useState(false)
   const [used, setUsed] = useState([])
+  const [expandedId, setExpandedId] = useState(null)
 
   const rollDice = () => {
     if (rolling) return
@@ -162,11 +163,14 @@ export default function Projects() {
             {projects.map((p, i) => (
               <motion.div
                 key={p.id}
+                layout
                 className={`project-item ${used.includes(p.id) ? 'assigned' : ''}`}
+                onClick={() => setExpandedId(expandedId === p.id ? null : p.id)}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: Math.min(i * 0.03, 0.4), duration: 0.5 }}
+                transition={{ duration: 0.4 }}
+                style={{ cursor: 'pointer' }}
               >
                 <div className="project-item-header">
                   <span className={`project-num ${used.includes(p.id) ? 'done' : ''}`}>
@@ -175,6 +179,60 @@ export default function Projects() {
                   <h4 className="project-title">{p.title}</h4>
                 </div>
                 <p className="project-desc">{p.desc}</p>
+
+                <AnimatePresence>
+                  {expandedId === p.id && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <div style={{ marginTop: 20, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                          <h5 style={{ color: 'var(--neon-cyan)', display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.9rem' }}>
+                            <Code2 size={16} /> Bootstrap Prompt
+                          </h5>
+                          <button 
+                            className="nav-btn" 
+                            style={{ padding: '4px 10px', fontSize: '0.75rem' }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              const promptText = `Act as an expert MERN stack developer. I am building a project called "${p.title}".\n\nProject Description: ${p.desc}\n\nCore Requirements:\n1. Frontend: Build a responsive React UI (Vite).\n2. Backend: Set up a Node.js/Express REST API.\n3. Database: Design a MongoDB schema to support the app data.\n4. AI Integration: Integrate the Google Gemini API to implement the AI capabilities.\n\nPlease provide a step-by-step implementation plan, starting with the MongoDB schema and Backend API routes.`;
+                              navigator.clipboard.writeText(promptText);
+                              alert('Prompt copied to clipboard!');
+                            }}
+                          >
+                            Copy Prompt
+                          </button>
+                        </div>
+                        <div style={{ 
+                          fontSize: '0.85rem', 
+                          whiteSpace: 'pre-wrap', 
+                          background: 'rgba(0,0,0,0.3)', 
+                          padding: 15, 
+                          borderRadius: 12, 
+                          color: '#e2e8f0', 
+                          fontFamily: 'monospace',
+                          lineHeight: 1.6,
+                          border: '1px solid rgba(255,255,255,0.05)'
+                        }}>
+{`Act as an expert MERN stack developer. I am building a project called "${p.title}".
+
+Project Description: ${p.desc}
+
+Core Requirements:
+1. Frontend: Build a responsive React UI (Vite).
+2. Backend: Set up a Node.js/Express REST API.
+3. Database: Design a MongoDB schema to support the app data.
+4. AI Integration: Integrate the Google Gemini API to implement the AI capabilities.
+
+Please provide a step-by-step implementation plan, starting with the MongoDB schema and Backend API routes.`}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             ))}
           </div>
