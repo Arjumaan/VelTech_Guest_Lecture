@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Brain, Cpu, Sparkles, MessageSquare, FileText, Star, Shield, AlertTriangle, Rocket, Globe, Layers, Server, Database, GitBranch, Zap, Code2, Search } from 'lucide-react'
+import { Brain, Cpu, Sparkles, MessageSquare, FileText, Star, Shield, AlertTriangle, Rocket, Globe, Layers, Server, Database, GitBranch, Zap, Code2, Search, HelpCircle, CheckCircle } from 'lucide-react'
 import Accordion from '../components/Accordion'
 import CodeBlock from '../components/CodeBlock'
 import FlowDiagram from '../components/FlowDiagram'
@@ -221,14 +221,132 @@ Attempt 3 → Wait 4s
           </Accordion>
         </section>
 
+        {/* Advanced MERN Architecture */}
+        <section className="section">
+          <h2 className="section-title">⚙️ Part VI — Advanced MERN Architecture</h2>
+          
+          <Accordion title="State Management & Context API" icon={<Layers size={18} />} neonColor="lime" defaultOpen={true}>
+            <p style={{ marginBottom: 12 }}>Passing props everywhere becomes difficult. Use Context for global state.</p>
+            <CodeBlock lang="jsx">{`// 1. Create Context
+const AuthContext = createContext(null);
+
+// 2. Provider (Wrap your app)
+<AuthContext.Provider value={{ user, login, logout }}>
+  {children}
+</AuthContext.Provider>
+
+// 3. Consumer (Inside any component)
+const { user } = useContext(AuthContext);`}</CodeBlock>
+            <div className="grid-3" style={{ marginTop: 16 }}>
+              <div className="neo-inset"><h4>Local State</h4><p style={{ fontSize: '0.85rem' }}>Modal open, input value</p></div>
+              <div className="neo-inset"><h4>Shared State</h4><p style={{ fontSize: '0.85rem' }}>Auth user, theme, cart</p></div>
+              <div className="neo-inset"><h4>Server State</h4><p style={{ fontSize: '0.85rem' }}>Events, users (from DB)</p></div>
+            </div>
+          </Accordion>
+
+          <Accordion title="Reusable Components & API Layer" icon={<Code2 size={18} />} neonColor="lime">
+            <h4>Component Reusability</h4>
+            <p style={{ fontSize: '0.85rem', marginBottom: 12 }}>Instead of repeating code, build reusable UI pieces like <code>Button.jsx</code> or <code>EventCard.jsx</code>.</p>
+            
+            <h4>API Service Layer</h4>
+            <p style={{ fontSize: '0.85rem', marginBottom: 12 }}>Don't write <code>fetch()</code> in every component. Centralize it:</p>
+            <CodeBlock lang="javascript">{`// services/api.js
+export async function getEvents() {
+  const response = await fetch(\`\${API_URL}/events\`);
+  if (!response.ok) throw new Error("Failed");
+  return response.json();
+}
+
+// In Component:
+const events = await getEvents();`}</CodeBlock>
+          </Accordion>
+
+          <Accordion title="Debugging & Performance" icon={<Zap size={18} />} neonColor="lime">
+            <h4>Full-Stack Debugging Checklist</h4>
+            <ol className="viva-list">
+              <li>Open Browser DevTools → Network Tab</li>
+              <li>Check URL, Method, Request Body, Response</li>
+              <li>Check Backend Terminal</li>
+              <li>Check Controller & Database</li>
+            </ol>
+            <h4 style={{ marginTop: 16 }}>Common Status Codes</h4>
+            <div className="grid-3">
+              <div className="neo-inset"><strong style={{ color: 'var(--neon-lime)' }}>200</strong> Success</div>
+              <div className="neo-inset"><strong style={{ color: 'var(--neon-cyan)' }}>201</strong> Created</div>
+              <div className="neo-inset"><strong style={{ color: 'var(--neon-pink)' }}>400</strong> Bad Request</div>
+              <div className="neo-inset"><strong style={{ color: 'var(--neon-pink)' }}>401</strong> Unauthorized</div>
+              <div className="neo-inset"><strong style={{ color: 'var(--neon-pink)' }}>404</strong> Not Found</div>
+              <div className="neo-inset"><strong style={{ color: 'var(--neon-pink)' }}>500</strong> Server Error</div>
+            </div>
+            <h4 style={{ marginTop: 16 }}>Performance: Debouncing</h4>
+            <p style={{ fontSize: '0.85rem', marginBottom: 12 }}>Don't hit the API on every single keystroke. Wait for the user to stop typing.</p>
+            <CodeBlock lang="javascript">{`setTimeout(() => searchAPI(query), 300);`}</CodeBlock>
+          </Accordion>
+
+          <Accordion title="Git & Deployment" icon={<Globe size={18} />} neonColor="lime">
+            <div className="grid-2">
+              <div className="neo-inset">
+                <h4>Git Flow</h4>
+                <CodeBlock lang="bash">{`git init
+git add .
+git commit -m "Init"
+git push -u origin main`}</CodeBlock>
+              </div>
+              <div className="neo-inset">
+                <h4>Deployment Checklist</h4>
+                <ul style={{ fontSize: '0.85rem', paddingLeft: 16 }}>
+                  <li>Environment Variables</li>
+                  <li>CORS Configuration</li>
+                  <li>MongoDB Cloud URI</li>
+                  <li>AI API Key</li>
+                </ul>
+              </div>
+            </div>
+            <div className="real-world-box" style={{ marginTop: 12 }}>
+              <strong>NEVER</strong> deploy <code>.env</code> files, API keys, or database credentials to public GitHub repositories!
+            </div>
+          </Accordion>
+        </section>
+
         {/* Capstone */}
         <section className="section">
-          <h2 className="section-title">🚀 Part VI — Capstone: CampusConnect AI</h2>
+          <h2 className="section-title">🚀 Part VII — Capstone: CampusConnect AI</h2>
           <Accordion title="Capstone Features & Roles" icon={<Rocket size={18} />} neonColor="purple" defaultOpen={true}>
             <div className="grid-3">
               <div className="neo-inset"><h4>👨‍🎓 Student</h4><p style={{ fontSize: '0.85rem' }}>Register, Login, View/Search events, Register for events, AI chat, AI recommendations</p></div>
               <div className="neo-inset"><h4>🎯 Organizer</h4><p style={{ fontSize: '0.85rem' }}>Create/Edit/Delete events, AI description generator, View registrations</p></div>
               <div className="neo-inset"><h4>👑 Admin</h4><p style={{ fontSize: '0.85rem' }}>Manage users, Manage all events, View platform stats</p></div>
+            </div>
+          </Accordion>
+
+          <Accordion title="Database & API Design" icon={<Database size={18} />} neonColor="purple">
+            <div className="grid-2">
+              <div>
+                <h4>MongoDB Collections</h4>
+                <ul className="viva-list">
+                  <li><strong>Users:</strong> name, email, password, role</li>
+                  <li><strong>Events:</strong> title, desc, category, venue, date, createdBy</li>
+                  <li><strong>Registrations:</strong> user, event, registeredAt</li>
+                </ul>
+              </div>
+              <div>
+                <h4>REST API Routes</h4>
+                <ul className="viva-list">
+                  <li><code>POST /api/auth/register</code></li>
+                  <li><code>GET /api/events</code></li>
+                  <li><code>POST /api/events/:id/register</code></li>
+                  <li><code>POST /api/ai/chat</code></li>
+                  <li><code>POST /api/ai/recommend</code></li>
+                </ul>
+              </div>
+            </div>
+          </Accordion>
+
+          <Accordion title="Testing Strategy" icon={<CheckCircle size={18} />} neonColor="purple">
+            <div className="grid-3">
+              <div className="neo-inset"><h4>Frontend</h4><p style={{ fontSize: '0.85rem' }}>Forms, Navigation, Loading states, Errors, Responsiveness</p></div>
+              <div className="neo-inset"><h4>Backend</h4><p style={{ fontSize: '0.85rem' }}>Status codes, Auth/RBAC, DB operations, Error handling</p></div>
+              <div className="neo-inset"><h4>AI Edge Cases</h4><p style={{ fontSize: '0.85rem' }}>Empty input, Malicious prompts, Rate limits, Hallucinations</p></div>
             </div>
           </Accordion>
 
@@ -259,6 +377,31 @@ Attempt 3 → Wait 4s
               <tr><td>Presentation</td><td>2%</td></tr>
             </tbody></table>
           </Accordion>
+        </section>
+
+        {/* Common Doubts */}
+        <section className="section">
+          <h2 className="section-title">🤔 Part VIII — Common Student Doubts</h2>
+          <div className="grid-2">
+            <Accordion title="Does Gen AI mean ChatGPT?" icon={<HelpCircle size={18} />} neonColor="cyan">
+              <p><strong>No.</strong> ChatGPT is an application/product built using AI models. Generative AI is a broader category.</p>
+            </Accordion>
+            <Accordion title="Does AI know everything?" icon={<HelpCircle size={18} />} neonColor="cyan">
+              <p><strong>No.</strong> An AI model can produce incorrect or outdated information (Hallucination).</p>
+            </Accordion>
+            <Accordion title="Can AI access my MongoDB?" icon={<HelpCircle size={18} />} neonColor="cyan">
+              <p><strong>Not automatically.</strong> Your application must deliberately provide appropriate data to the model (Grounding).</p>
+            </Accordion>
+            <Accordion title="Can I put API keys in React?" icon={<HelpCircle size={18} />} neonColor="cyan">
+              <p><strong>Never.</strong> Do not expose a secret API key in browser code. Always route AI requests through your Backend.</p>
+            </Accordion>
+            <Accordion title="Will prompts solve hallucinations?" icon={<HelpCircle size={18} />} neonColor="cyan">
+              <p><strong>No.</strong> Prompt quality helps, but reliable systems need Grounding, Validation, and Structured outputs.</p>
+            </Accordion>
+            <Accordion title="Should AI make DB decisions?" icon={<HelpCircle size={18} />} neonColor="cyan">
+              <p><strong>No.</strong> AI can assist or generate actions, but critical business rules must remain enforced by deterministic application code.</p>
+            </Accordion>
+          </div>
         </section>
 
         {/* Final Architecture */}
