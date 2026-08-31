@@ -50,8 +50,9 @@ export default function Projects() {
   useEffect(() => {
     if (diceBox.current) return;
     
-    // DiceBox expects a CSS selector string, not a DOM node ref
-    diceBox.current = new DiceBox('#dice-box-canvas', {
+    // DiceBox 1.1+ expects a single config object
+    diceBox.current = new DiceBox({
+      container: '#dice-box-canvas',
       assetPath: 'https://unpkg.com/@3d-dice/dice-box@1.1.4/dist/assets/',
       theme: 'default',
       themeColor: '#b300ff', // neon purple
