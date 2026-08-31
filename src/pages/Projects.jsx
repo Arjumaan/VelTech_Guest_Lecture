@@ -88,6 +88,12 @@ export default function Projects() {
         {/* Dice Roller */}
         <section className="section" style={{ textAlign: 'center' }}>
           <div className="dice-area">
+            <div style={{ position: 'absolute', top: 20, right: 20, zIndex: 10 }}>
+               <span className="tag tag-orange" style={{ fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px' }}>
+                 <Monitor size={14} /> Live Classroom Mode
+               </span>
+            </div>
+            
             <motion.button
               className={`dice-button ${rolling ? 'rolling' : ''}`}
               onClick={rollDice}
@@ -102,12 +108,12 @@ export default function Projects() {
               </motion.div>
             </motion.button>
 
-            <p className="dice-instruction">
+            <p className="dice-instruction" style={{ maxWidth: 450, lineHeight: 1.6 }}>
               {used.length >= 30
-                ? 'All 30 projects assigned! 🎉'
+                ? 'All 30 projects have been assigned! 🎉'
                 : rolling
-                  ? 'Rolling for your destiny...'
-                  : 'Click the dice to get your project!'}
+                  ? 'Consulting the AI for your destiny...'
+                  : 'Wait for your name! The instructor will roll the dice on the main projector to assign your unique project.'}
             </p>
 
             <div className="dice-stats">
