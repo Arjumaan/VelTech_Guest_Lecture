@@ -35,10 +35,13 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <a href="VelTech_Day1.pptx" download="VelTech_Day1.pptx" className="neo-btn nav-download">
+        </div>
+
+        <div className="nav-actions">
+          <a href="VelTech_Day1.pptx" download="VelTech_Day1.pptx" className="nav-btn nav-download">
             <BookOpen size={16} /> PPTs
           </a>
-          <a href="https://github.com/Arjumaan/MERN_Starter" target="_blank" rel="noreferrer" className="neo-btn" style={{ marginLeft: 8 }}>
+          <a href="https://github.com/Arjumaan/MERN_Starter" target="_blank" rel="noreferrer" className="nav-btn nav-source">
             <Code2 size={16} /> Source Code
           </a>
         </div>
@@ -67,6 +70,14 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
+            <div className="mobile-actions">
+              <a href="VelTech_Day1.pptx" download="VelTech_Day1.pptx" className="nav-btn nav-download" style={{ justifyContent: 'center' }}>
+                <BookOpen size={16} /> Download PPTs
+              </a>
+              <a href="https://github.com/Arjumaan/MERN_Starter" target="_blank" rel="noreferrer" className="nav-btn nav-source" style={{ justifyContent: 'center' }}>
+                <Code2 size={16} /> Source Code
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
