@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Dice5, RotateCcw, Sparkles, Code2 } from 'lucide-react'
+import { Dice5, RotateCcw, Sparkles, Code2, Monitor } from 'lucide-react'
 import './Projects.css'
 
 const projects = [
