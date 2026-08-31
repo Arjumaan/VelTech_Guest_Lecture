@@ -1,0 +1,118 @@
+.dice-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 0;
+}
+.dice-button {
+  width: 140px;
+  height: 140px;
+  border-radius: 28px;
+  border: none;
+  background: var(--bg);
+  box-shadow: 12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neon-purple);
+  transition: all 0.3s ease;
+}
+.dice-button:hover {
+  box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  color: var(--neon-cyan);
+}
+.dice-button:active, .dice-button.rolling {
+  box-shadow: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
+}
+.dice-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.dice-instruction {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.dice-stats {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Selected project */
+.selected-project {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  border-top: 4px solid var(--neon-purple);
+  position: relative;
+  overflow: hidden;
+}
+.selected-project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(179,0,255,0.03), rgba(0,229,255,0.03));
+  pointer-events: none;
+}
+.selected-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--neon-purple);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+.selected-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.selected-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.selected-tags {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Project list item */
+.project-item {
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+.project-item.assigned {
+  opacity: 0.5;
+}
+.project-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--bg);
+  box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+  color: var(--neon-purple);
+  flex-shrink: 0;
+}
+.project-num.done {
+  background: var(--neon-lime);
+  color: #fff;
+  box-shadow: none;
+}

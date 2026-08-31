@@ -1,0 +1,80 @@
+.hero {
+  padding: 80px 0 60px;
+  text-align: center;
+}
+.hero-content { max-width: 780px; margin: 0 auto; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.hero-downloads {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Day cards */
+.day-card { text-align: center; position: relative; overflow: hidden; }
+.day-badge { position: absolute; top: 16px; right: 16px; }
+.day-icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 8px;
+  background: var(--bg);
+  box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+.day-topics {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+}
+.day-topics li {
+  padding: 6px 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(163,177,198,0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.day-topics li::before {
+  content: '▸';
+  color: var(--neon-cyan);
+  font-weight: bold;
+}
+.day-topics li:last-child { border-bottom: none; }
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 1.8rem; }
+  .hero { padding: 50px 0 40px; }
+}

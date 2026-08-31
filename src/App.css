@@ -1,0 +1,16 @@
+/* App-level layout styles */
+.app-footer {
+  background: var(--bg);
+  box-shadow: 0 -4px 12px var(--shadow-dark);
+  padding: 32px 0;
+  text-align: center;
+  margin-top: 60px;
+}
+.app-footer p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+.app-footer a {
+  color: var(--neon-cyan);
+  text-decoration: none;
+}

@@ -1,0 +1,40 @@
+.day-page { padding-bottom: 40px; }
+.day-hero {
+  padding: 50px 0 40px;
+  text-align: center;
+}
+.day-hero-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin: 12px 0 8px;
+}
+.day-hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.day-content { margin-top: 20px; }
+
+.real-world-box {
+  background: rgba(0,229,255,0.05);
+  border-left: 3px solid var(--neon-cyan);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.viva-list {
+  padding-left: 20px;
+  font-size: 0.9rem;
+}
+.viva-list li {
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(163,177,198,0.15);
+}
+.viva-list li:last-child { border-bottom: none; }
+
+@media (max-width: 768px) {
+  .day-hero-title { font-size: 1.5rem; }
+}
