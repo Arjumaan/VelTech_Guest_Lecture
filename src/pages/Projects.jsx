@@ -84,7 +84,7 @@ export default function Projects() {
         </div>
       </header>
 
-      <div className="container day-content">
+      <div className="container day-content projects-wrapper">
         {/* Dice Roller */}
         <section className="section" style={{ textAlign: 'center' }}>
           <div className="dice-area">
@@ -98,7 +98,7 @@ export default function Projects() {
                 animate={rolling ? { rotate: [0, 360] } : { rotate: 0 }}
                 transition={rolling ? { duration: 0.3, repeat: Infinity, ease: 'linear' } : {}}
               >
-                <Dice5 size={64} />
+                <Dice5 size={72} strokeWidth={1.5} />
               </motion.div>
             </motion.button>
 
@@ -106,16 +106,16 @@ export default function Projects() {
               {used.length >= 30
                 ? 'All 30 projects assigned! 🎉'
                 : rolling
-                  ? 'Rolling...'
+                  ? 'Rolling for your destiny...'
                   : 'Click the dice to get your project!'}
             </p>
 
             <div className="dice-stats">
-              <span className="tag tag-cyan">{30 - used.length} remaining</span>
-              <span className="tag tag-pink">{used.length} assigned</span>
+              <span className="tag tag-cyan" style={{ fontSize: '1rem', padding: '8px 16px' }}>{30 - used.length} remaining</span>
+              <span className="tag tag-pink" style={{ fontSize: '1rem', padding: '8px 16px' }}>{used.length} assigned</span>
               {used.length > 0 && (
-                <button className="neo-btn" onClick={reset} style={{ fontSize: '0.8rem', padding: '6px 14px' }}>
-                  <RotateCcw size={14} /> Reset
+                <button className="nav-btn nav-download" onClick={reset} style={{ padding: '8px 20px', cursor: 'pointer' }}>
+                  <RotateCcw size={16} /> Reset Board
                 </button>
               )}
             </div>
@@ -126,14 +126,14 @@ export default function Projects() {
             {selected && !rolling && (
               <motion.div
                 key={selected.id}
-                className="neo-card selected-project"
+                className="selected-project"
                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 20 }}
               >
                 <div className="selected-badge">
-                  <Sparkles size={18} /> Project #{selected.id}
+                  <Sparkles size={16} /> Project #{selected.id}
                 </div>
                 <h2 className="selected-title">{selected.title}</h2>
                 <p className="selected-desc">{selected.desc}</p>
@@ -149,26 +149,26 @@ export default function Projects() {
         </section>
 
         {/* All Projects List */}
-        <section className="section">
-          <h2 className="section-title">📋 All 30 Project Ideas</h2>
-          <p className="section-subtitle">Each project must include: React frontend, Node/Express backend, MongoDB, and at least one AI feature</p>
-          <div className="grid-2">
+        <section className="section" style={{ marginTop: 60 }}>
+          <h2 className="section-title"><Sparkles className="neon-purple" style={{ display: 'inline', verticalAlign: 'middle', marginRight: 8 }} /> All 30 Project Ideas</h2>
+          <p className="section-subtitle">Every project listed below requires a React frontend, Node/Express backend, MongoDB, and at least one AI feature.</p>
+          <div className="projects-grid">
             {projects.map((p, i) => (
               <motion.div
                 key={p.id}
-                className={`neo-card project-item ${used.includes(p.id) ? 'assigned' : ''}`}
+                className={`project-item ${used.includes(p.id) ? 'assigned' : ''}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: Math.min(i * 0.03, 0.5) }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: Math.min(i * 0.03, 0.4), duration: 0.5 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+                <div className="project-item-header">
                   <span className={`project-num ${used.includes(p.id) ? 'done' : ''}`}>
                     {used.includes(p.id) ? '✓' : p.id}
                   </span>
-                  <h4 style={{ fontSize: '0.95rem' }}>{p.title}</h4>
+                  <h4 className="project-title">{p.title}</h4>
                 </div>
-                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{p.desc}</p>
+                <p className="project-desc">{p.desc}</p>
               </motion.div>
             ))}
           </div>
