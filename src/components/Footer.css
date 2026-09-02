@@ -46,6 +46,40 @@
   background: rgba(255, 255, 255, 0.6);
 }
 
+.footer-organizer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.6);
+  align-items: center;
+}
+
+.organizer-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.organizer-logo {
+  max-width: 150px;
+  border-radius: 8px;
+}
+
+.organizer-link {
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.organizer-link:hover {
+  color: var(--neon-pink);
+}
+
 .portfolio-label {
   font-size: 0.75rem;
   text-transform: uppercase;

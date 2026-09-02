@@ -49,7 +49,7 @@ export default function Projects() {
 
   useEffect(() => {
     if (diceBox.current) return;
-    
+
     // DiceBox 1.1+ expects a single config object
     diceBox.current = new DiceBox({
       container: '#dice-box-canvas',
@@ -61,7 +61,7 @@ export default function Projects() {
       throwForce: 6,
       startingHeight: 8
     });
-    
+
     diceBox.current.init().catch(console.error);
 
     return () => {
@@ -123,18 +123,18 @@ export default function Projects() {
         <section className="section" style={{ textAlign: 'center' }}>
           <div className="dice-area" style={{ position: 'relative', minHeight: 450 }}>
             {/* The 3D Dice Canvas Container */}
-            <div 
-               id="dice-box-canvas"
-               ref={diceRef} 
-               style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: 1, pointerEvents: 'none' }} 
+            <div
+              id="dice-box-canvas"
+              ref={diceRef}
+              style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: 1, pointerEvents: 'none' }}
             />
 
             <div style={{ position: 'absolute', top: 20, right: 20, zIndex: 10 }}>
-               <span className="tag tag-orange" style={{ fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px' }}>
-                 <Monitor size={14} /> Live Classroom Mode
-               </span>
+              <span className="tag tag-orange" style={{ fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px' }}>
+                <Monitor size={14} /> Live Classroom Mode
+              </span>
             </div>
-            
+
             <motion.button
               className={`dice-button ${rolling ? 'rolling' : ''}`}
               onClick={rollDice}
@@ -199,7 +199,7 @@ export default function Projects() {
         {/* All Projects List */}
         <section className="section" style={{ marginTop: 60 }}>
           <h2 className="section-title"><Sparkles className="neon-purple" style={{ display: 'inline', verticalAlign: 'middle', marginRight: 8 }} /> All 30 Project Ideas</h2>
-          <p className="section-subtitle">Every project listed below requires a React frontend, Node/Express backend, MongoDB, and at least one AI feature.</p>
+          <p className="section-subtitle">Every project listed below requires a React frontend, Node/Express backend, MongoDB, and at least one AI feature. Click on any project to get the prompt.</p>
           <div className="projects-grid">
             {projects.map((p, i) => (
               <motion.div
@@ -234,10 +234,10 @@ export default function Projects() {
                           <h5 style={{ color: 'var(--neon-cyan)', display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.9rem' }}>
                             <Code2 size={16} /> Bootstrap Prompt
                           </h5>
-                          <button 
-                            className="nav-btn" 
-                            style={{ 
-                              padding: '4px 10px', 
+                          <button
+                            className="nav-btn"
+                            style={{
+                              padding: '4px 10px',
                               fontSize: '0.75rem',
                               background: copiedId === p.id ? 'var(--neon-lime)' : '',
                               color: copiedId === p.id ? '#000' : ''
@@ -253,18 +253,18 @@ export default function Projects() {
                             {copiedId === p.id ? '✓ Copied!' : 'Copy Prompt'}
                           </button>
                         </div>
-                        <div style={{ 
-                          fontSize: '0.85rem', 
-                          whiteSpace: 'pre-wrap', 
-                          background: 'rgba(0,0,0,0.3)', 
-                          padding: 15, 
-                          borderRadius: 12, 
-                          color: '#e2e8f0', 
+                        <div style={{
+                          fontSize: '0.85rem',
+                          whiteSpace: 'pre-wrap',
+                          background: 'rgba(0,0,0,0.3)',
+                          padding: 15,
+                          borderRadius: 12,
+                          color: '#e2e8f0',
                           fontFamily: 'monospace',
                           lineHeight: 1.6,
                           border: '1px solid rgba(255,255,255,0.05)'
                         }}>
-{`Act as an expert MERN stack developer. I am building a project called "${p.title}".
+                          {`Act as an expert MERN stack developer. I am building a project called "${p.title}".
 
 Project Description: ${p.desc}
 
