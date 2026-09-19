@@ -174,7 +174,7 @@ export default function Day1() {
           <Accordion title="Variables, Types & Functions" icon={<Braces size={18} />} neonColor="lime" defaultOpen={true}>
             <CodeBlock lang="javascript">{`// Variables
 let score = 10;        // Can be reassigned
-const college = "VelTech"; // Cannot be reassigned
+const college = "Engineering College"; // Cannot be reassigned
 
 // Data Types
 const name = "Arjun";     // String

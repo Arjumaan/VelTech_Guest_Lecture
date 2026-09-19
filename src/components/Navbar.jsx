@@ -38,7 +38,7 @@ export default function Navbar() {
         </div>
 
         <div className="nav-actions">
-          <a href="VelTech_Day1.pptx" download="VelTech_Day1.pptx" className="nav-btn nav-download">
+          <a href="Day1.pptx" download="Day1.pptx" className="nav-btn nav-download">
             <BookOpen size={16} /> PPTs
           </a>
           <a href="https://github.com/Arjumaan/MERN_Starter" target="_blank" rel="noreferrer" className="nav-btn nav-source">
@@ -71,7 +71,7 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="mobile-actions">
-              <a href="VelTech_Day1.pptx" download="VelTech_Day1.pptx" className="nav-btn nav-download" style={{ justifyContent: 'center' }}>
+              <a href="Day1.pptx" download="Day1.pptx" className="nav-btn nav-download" style={{ justifyContent: 'center' }}>
                 <BookOpen size={16} /> Download PPTs
               </a>
               <a href="https://github.com/Arjumaan/MERN_Starter" target="_blank" rel="noreferrer" className="nav-btn nav-source" style={{ justifyContent: 'center' }}>

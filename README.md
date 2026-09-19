@@ -1,9 +1,9 @@
-# 🎓 MERN & AI Masterclass — VelTech Guest Lecture
+# 🎓 MERN & AI Masterclass — Guest Lecture
 
 ![MERN & AI Banner](https://img.shields.io/badge/MERN-Masterclass-cyan?style=for-the-badge&logo=react)
 ![Theme](https://img.shields.io/badge/UI-Neomorphism-pink?style=for-the-badge)
 
-A premium, interactive showcase website designed specifically for the **3-Day MERN Stack & AI Integration Guest Lecture** at VelTech Engineering University. 
+A premium, interactive showcase website designed specifically for the **3-Day MERN Stack & AI Integration Guest Lecture**. 
 
 This repository houses the frontend codebase for the lecture's companion website, serving as an interactive curriculum guide, concept cheat sheet, and project assignment portal for the participating students.
 

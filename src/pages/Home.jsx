@@ -53,7 +53,7 @@ export default function Home() {
           >
             <div className="hero-badge neo-inset">
               <Sparkles size={14} className="neon-cyan" />
-              <span>VelTech Engineering University • Advanced Masterclass</span>
+              <span>Full-Stack & AI • Advanced Masterclass</span>
             </div>
 
             <h1 className="hero-title">
@@ -82,13 +82,13 @@ export default function Home() {
 
             <div className="hero-downloads">
               <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600 }}>Download Masterclass Assets:</span>
-              <a href="VelTech_Day1.pptx" download="VelTech_Day1.pptx" className="neo-btn" style={{ fontSize: '0.8rem', padding: '6px 14px' }}>
+              <a href="Day1.pptx" download="Day1.pptx" className="neo-btn" style={{ fontSize: '0.8rem', padding: '6px 14px' }}>
                 <Download size={14} /> Day 1 PPT
               </a>
-              <a href="VelTech_Day2.pptx" download="VelTech_Day2.pptx" className="neo-btn" style={{ fontSize: '0.8rem', padding: '6px 14px' }}>
+              <a href="Day2.pptx" download="Day2.pptx" className="neo-btn" style={{ fontSize: '0.8rem', padding: '6px 14px' }}>
                 <Download size={14} /> Day 2 PPT
               </a>
-              <a href="VelTech_Day3.pptx" download="VelTech_Day3.pptx" className="neo-btn" style={{ fontSize: '0.8rem', padding: '6px 14px' }}>
+              <a href="Day3.pptx" download="Day3.pptx" className="neo-btn" style={{ fontSize: '0.8rem', padding: '6px 14px' }}>
                 <Download size={14} /> Day 3 PPT
               </a>
             </div>
