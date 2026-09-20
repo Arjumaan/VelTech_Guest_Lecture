@@ -1,6 +1,7 @@
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ParticleBackground from './components/ParticleBackground'
 import Home from './pages/Home'
 import Day1 from './pages/Day1'
 import Day2 from './pages/Day2'
@@ -13,6 +14,7 @@ import './App.css'
 function App() {
   return (
     <HashRouter>
+      <ParticleBackground />
       <Navbar />
       <main>
         <Routes>

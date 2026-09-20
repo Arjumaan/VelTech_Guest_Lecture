@@ -1,157 +1,308 @@
 .app-footer {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
-  padding: 40px 0 24px;
-  margin-top: 60px;
+  box-shadow: 0 -10px 40px rgba(31, 38, 135, 0.05);
+  padding: 50px 0 28px;
+  margin-top: 80px;
+  overflow: hidden;
 }
 
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-bottom: 32px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid rgba(163, 177, 198, 0.2);
+/* Gradient accent bar at top of footer */
+.footer-top-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-pink), var(--neon-purple), transparent);
 }
 
-.footer-brand {
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 3-column Grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr 1.6fr;
+  gap: 40px;
+  margin-bottom: 45px;
+  align-items: start;
+}
+
+.footer-col {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+}
+
+/* Column 1: Brand */
+.footer-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.brand-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.15);
+}
+
+.brand-title-group {
+  display: flex;
+  flex-direction: column;
 }
 
 .brand-text {
   font-weight: 900;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   color: var(--text);
   letter-spacing: -0.5px;
+  line-height: 1.1;
 }
 
 .brand-subtext {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
-  font-weight: 500;
-}
-
-.footer-portfolio {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 16px 24px;
-  background: rgba(255, 255, 255, 0.6);
-}
-
-.footer-organizers {
-  display: flex;
-  gap: 24px;
-  align-items: stretch;
-  flex-wrap: wrap;
-}
-
-.footer-organizer {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 22px 28px;
-  background: rgba(255, 255, 255, 0.65);
-  align-items: center;
-  justify-content: space-between;
-  width: 290px;
-  min-height: 190px;
-  border-radius: 14px;
-}
-
-.organizer-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-  font-weight: 700;
-}
-
-.organizer-logo {
-  width: 100%;
-  max-width: 230px;
-  height: 82px;
-  object-fit: contain;
-  border-radius: 8px;
-  transition: transform 0.2s ease;
-}
-
-.organizer-logo:hover {
-  transform: scale(1.04);
-}
-
-.organizer-link {
-  color: var(--text);
-  font-size: 0.85rem;
   font-weight: 600;
+}
+
+.footer-description {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.masterclass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  width: fit-content;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Column titles */
+.footer-col-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.3px;
+}
+
+/* Column 2: Navigation Links */
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links-list li a {
+  color: var(--text-muted);
   text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-links-list li a:hover {
+  color: var(--neon-pink);
+  transform: translateX(4px);
+}
+
+/* Column 3: Institutional Partners Cards */
+.partners-cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.partner-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.partner-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 12px 28px rgba(0, 212, 255, 0.12);
+}
+
+.partner-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.partner-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--neon-cyan);
+}
+
+.partner-badge-supported {
+  color: var(--neon-purple);
+}
+
+.partner-org-name {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.partner-logo-wrapper {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 8px;
+  margin-bottom: 12px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.03);
+}
+
+.partner-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.partner-external-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
   transition: all 0.2s ease;
   margin-top: auto;
 }
 
-.organizer-link:hover {
+.partner-external-btn:hover {
   color: var(--neon-pink);
+  background: rgba(255, 255, 255, 0.8);
 }
 
-.portfolio-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-  font-weight: 700;
-}
-
-.portfolio-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text);
-  font-weight: 700;
-  font-size: 1rem;
-  text-decoration: none;
-  font-family: 'JetBrains Mono', monospace;
-  transition: all 0.2s ease;
-}
-
-.portfolio-link:hover {
-  color: var(--neon-cyan);
-  text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
-}
-
-.footer-bottom {
+/* Footer Bottom Bar */
+.footer-bottom-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
-}
-
-.footer-bottom p {
-  color: var(--text-muted);
+  padding-top: 24px;
+  border-top: 1px solid rgba(163, 177, 198, 0.2);
   font-size: 0.85rem;
-  font-weight: 500;
-  margin: 0;
+  color: var(--text-muted);
 }
 
-.footer-love {
+.copyright-text .highlight-text {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.tech-stack-pills {
   display: flex;
   align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.35);
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
+.tech-stack-pills .dot {
+  color: var(--neon-cyan);
+}
+
+.footer-love-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}
+
+.neon-pink-heart {
+  color: var(--neon-pink);
+  fill: var(--neon-pink);
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
-  .footer-bottom {
+  .partners-cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .footer-bottom-bar {
     flex-direction: column;
     text-align: center;
   }
